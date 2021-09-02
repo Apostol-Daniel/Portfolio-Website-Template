@@ -42,6 +42,12 @@
 
 /* General Styles */
 
+html
+{
+    scroll-behavior: smooth;
+}
+
+
 body
 {
     background: var(--clr-light);
@@ -157,7 +163,7 @@ h3{font-size: var(--fs-h3);}
 
     /* hiding the nav of the screen; bringing it back later with js */
     transform: translateX(100%);
-    transition:  transform 250mx cubic-bezier(.5,0,.5,1);
+    transition:  transform 250ms cubic-bezier(.5,0,.5,1);
 
 }
 
@@ -182,6 +188,11 @@ h3{font-size: var(--fs-h3);}
     text-decoration: none;
 }
 
+.nav-open .nav
+{
+    transform: translateX(0);
+}
+
 .nav__link:hover
 {
     color: var(--clr-accent);
@@ -189,7 +200,7 @@ h3{font-size: var(--fs-h3);}
 
 .nav-toggle
 {
-    padding: .25em;
+    padding: .5em;
     background: transparent;
     border: 0;
     cursor: pointer;
@@ -197,6 +208,27 @@ h3{font-size: var(--fs-h3);}
     right: 1em ;
     top: 1em;
     z-index: 1000;
+}
+
+
+.nav-open .nav-toggle
+{
+    position:fixed ;
+}
+
+.nav-open .hamburger
+{
+    transform: rotate(.625turn);
+}
+
+.nav-open .hamburger::before
+{
+    transform: rotate(90deg) translateX(-6px);
+}
+
+.nav-open .hamburger::after
+{
+    opacity: 0;
 }
 
 /* hamburger nav */
@@ -212,7 +244,7 @@ h3{font-size: var(--fs-h3);}
 .hamburger::before,
 .hamburger::after
 {
-    background: var(--clr-dark);
+    background: var(--clr-accent);
     width: 2em;
     height: 3px;
     border-radius: 1em; 
@@ -228,6 +260,7 @@ h3{font-size: var(--fs-h3);}
     right: 0;
 }
 
+/* add slices to hamburge */
 .hamburger::before{top: 6px;}
 .hamburger::after{bottom: 6px;}
 
